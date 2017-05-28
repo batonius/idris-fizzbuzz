@@ -1,0 +1,4 @@
+package fizzbuzz
+modules = FizzBuzz
+main = FizzBuzz
+executable = fizzbuzz
