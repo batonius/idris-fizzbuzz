@@ -71,9 +71,8 @@ fizzBuzz : (n : Nat) ->
                  n = (i (safeHead nIsNotZP v)),
                  TotalOrderVect (FizzBuzzValueNatProp GT) v))
 fizzBuzz Z nIsNotZP = void $ nIsNotZP Refl
-fizzBuzz (S Z) _ = ([MkFizzBuzzValue 1 "1"] **
-    (NatCase oneIsNotMulThree oneIsNotMulFive :: Nil, Refl, SingletonCase))
-fizzBuzz (S (S k)) _ = let (y::ys ** (fizzBuzzInTailP, skInHeadP, totalOrderPoof))
+fizzBuzz (S Z) _ = (_ ** ([NatCase oneIsNotMulThree oneIsNotMulFive], Refl, SingletonCase))
+fizzBuzz (S (S k)) _ = let (_::_ ** (fizzBuzzInTailP, skInHeadP, totalOrderPoof))
                             = (fizzBuzz (S k) SIsNotZ) in
                          case (decEq (modThree (S (S k))) 0, decEq (modFive (S (S k))) 0) of
                             (Yes mulOfThreeP, No notMulOfFiveP) =>
